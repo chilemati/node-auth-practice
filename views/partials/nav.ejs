@@ -1,0 +1,14 @@
+
+<nav>
+    <div class="logo"><a href="/node/auth/api/">Logo</a></div>
+    <!-- <div class="blog"><a href="/node/auth/api/blog">blog</a></div> -->
+    <div class="two">
+        <% if(user) { %> 
+        <div class="user"><span> <%= user.email %>  </span></div>
+        <div class="out"><a href="/node/auth/api/logout">Logout</a></div>
+        <% } else { %> 
+        <div class="blog"><a href="/node/auth/api/signup">Signup</a></div>
+        <div class="in"><a href="/node/auth/api/login">Login</a></div>
+            <% } %>
+    </div>
+</nav>

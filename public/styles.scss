@@ -1,0 +1,129 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+@mixin flex {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: space-between;
+}
+
+body {
+	background-color: darkblue;
+	color: white;
+	margin: 0.5rem 5%;
+}
+
+nav {
+	padding: 2rem 1rem;
+	@include flex();
+	box-shadow: 5px 4px 20px black;
+	border-radius: 12px 24px 12px 24px;
+	margin-bottom: 3rem;
+	a {
+		text-shadow: 5px 4px 20px black;
+		text-decoration: none;
+		font-size: 2vw;
+		text-transform: capitalize;
+		color: gold;
+		font-weight: bold;
+		padding: 1rem;
+
+		&:hover {
+			border: 1px saddlebrown solid;
+			border-radius: 12px;
+			box-shadow: 4px 4px 20px black;
+		}
+	}
+	.two {
+		@include flex();
+		gap: 2rem;
+	}
+}
+
+.signup-form {
+	margin: 10% auto 1rem auto;
+	@include flex();
+	flex-direction: column;
+	box-shadow: 4px 4px 20px black;
+	width: 50%;
+	padding: 1rem;
+	border-radius: 9px;
+	flex-wrap: wrap;
+	h1 {
+		text-transform: uppercase;
+		font-size: 4vw;
+		font-weight: bold;
+		margin-bottom: 2rem;
+	}
+
+	label {
+		text-align: left;
+		font-size: 2vw;
+		align-self: flex-start;
+	}
+	input {
+		width: 60%;
+		height: 5vh;
+		outline: none;
+		border: none;
+		margin: 0.5rem;
+		padding: 0.2rem 1rem;
+		border-radius: 12px;
+		&:focus {
+			background-color: rgb(255, 215, 0, 0.5);
+			color: white;
+			font-size: 1.5vw;
+		}
+	}
+
+	.error {
+		color: crimson;
+		padding: 0.5rem 1rem;
+		font-style: italic;
+		font-size: 2vw;
+	}
+
+	button {
+		// align-self: flex-start;
+		margin-top: 2rem;
+		outline: none;
+		border: none;
+		padding: 0.5rem 1rem;
+		border-radius: 12px;
+		font-size: 2vw;
+		&:hover {
+			background-color: green;
+			transform: scale(1.1);
+			transition: 0.4s ease-in;
+			color: white;
+		}
+	}
+}
+
+.home {
+	.view {
+		margin: 0.5rem 0.8rem;
+		background-color: peru;
+		width: fit-content;
+		padding: 0.5rem;
+		border-radius: 12px;
+		&:hover {
+			background-color: green;
+		}
+		a {
+			text-decoration: none;
+			color: white;
+		}
+	}
+}
+
+footer {
+	text-align: center;
+	position: absolute;
+	bottom: 15px;
+	left: 5vw;
+}

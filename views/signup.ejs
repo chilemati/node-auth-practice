@@ -1,0 +1,63 @@
+<html lang="en">
+
+<%- include("partials/header.ejs") %>
+
+    <body>
+        <%- include("partials/nav.ejs") %>
+
+            <form class="signup-form">
+                <h1>Sign Up</h1>
+                <label for="email">Email</label>
+                <input type="text" name="email" required placeholder="example@gmail.com" autocomplete="email">
+                <div class="email error"></div>
+                <label for="password">Password</label>
+                <input type="password" name="password" required placeholder="Mininum of 6 characters" autocomplete="current-password">
+                <div class="password error"></div>
+                <button>Sign up</button>
+            </form>
+
+
+            <%- include("partials/footer.ejs") %>
+
+            <script>
+              let form =  document.querySelector('form');
+              let emailError = document.querySelector('form .email');
+              let passwordError = document.querySelector('form .password');
+
+
+              form.addEventListener('submit', async (e)=> {
+                e.preventDefault(e);
+                const email = form.email.value;
+                const password= form.password.value;
+                emailError.textContent = ' ';
+                passwordError.textContent = ' ';
+                // send to db
+                try {
+                  let res = await fetch('http://localhost:3000/node/auth/api/signup', {
+                    method: 'POST',
+                    body: JSON.stringify({email, password}),
+                    headers: {'Content-Type': 'application/json'}
+                  });
+                  // console.log(res);
+                  let data = await res.json();
+                  console.log(data);
+                  if(data.errors) {
+                    emailError.textContent = data.errors.email;
+                    passwordError.textContent = data.errors.password;
+                  } else{
+
+                    data.user && form.reset();
+                  }
+
+                  if(data.user) {
+                    location.assign('http://localhost:3000/node/auth/api/');
+                  }
+                } catch (err) {
+                  console.log(err);
+                }
+              })
+
+            </script>
+    </body>
+
+</html>
